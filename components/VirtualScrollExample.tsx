@@ -32,7 +32,9 @@ const VirtualScrollExample: React.FC = () => {
       return Array.from({ length: itemsPerPage }, (_, i) => ({
         id: (page - 1) * itemsPerPage + i + 1,
         title: `Post ${(page - 1) * itemsPerPage + i + 1}`,
-        content: `This is the content of post ${(page - 1) * itemsPerPage + i + 1}. It demonstrates the virtual scrolling capability.`,
+        content: `This is the content of post ${
+          (page - 1) * itemsPerPage + i + 1
+        }. It demonstrates the virtual scrolling capability.`,
       }));
     },
     []
@@ -69,6 +71,20 @@ const VirtualScrollExample: React.FC = () => {
 
   return (
     <div className="space-y-4 mt-5">
+      <div className="flex justify-between items-center">
+        <h2 className="text-2xl font-bold">Virtual Scroll Demo</h2>
+        <Button
+          onClick={() =>
+            window.open(
+              "https://www.npmjs.com/package/virtual-scroll-library",
+              "_blank"
+            )
+          }
+        >
+          View on NPM
+        </Button>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         <div>
           <Label htmlFor="itemsPerPage">Items Per Page</Label>
@@ -119,6 +135,10 @@ const VirtualScrollExample: React.FC = () => {
           New Loaded Items: {lastLoadedItems.length}
         </Badge>
         <Badge variant="outline">Loading: {isLoading ? "Yes" : "No"}</Badge>
+      </div>
+
+      <div className="bg-secondary p-2 rounded-md mb-2 text-center">
+        Scroll down in the box below to load more items
       </div>
 
       <div
